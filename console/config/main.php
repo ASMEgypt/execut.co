@@ -9,13 +9,20 @@ $params = array_merge(
 return [
     'id' => 'app-console',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => [
+        'log',
+        \execut\cms\bootstrap\Console::class,
+    ],
     'controllerNamespace' => 'console\controllers',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
     'controllerMap' => [
+        'release' => [
+            'class' => \execut\release\ReleaseController::class,
+            'vendorFolder' => 'execut', // Folder(s) inside @vendor for releasing, supported list
+        ],
         'fixture' => [
             'class' => 'yii\console\controllers\FixtureController',
             'namespace' => 'common\fixtures',

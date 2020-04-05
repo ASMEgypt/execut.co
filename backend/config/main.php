@@ -10,7 +10,9 @@ return [
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
-    'bootstrap' => ['log'],
+    'bootstrap' => ['log',
+        \execut\cms\bootstrap\Backend::class,
+    ],
     'modules' => [],
     'components' => [
         'request' => [
